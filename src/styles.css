@@ -1,0 +1,86 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@custom-variant tablet (@media (540px < width <= 820px));
+@custom-variant desktop (@media (width > 820px));
+
+:root {
+  font-family: "Avenir Next", Avenir, system-ui, sans-serif;
+  color: #19312b;
+  background: #f6f7f2;
+  font-synthesis: none;
+  line-height: 1.55;
+  --ink: #19312b;
+  --muted: #4c6159;
+  --green: #255b49;
+  --line: #dae2d9;
+  --paper: #fff;
+  --amber: #ffc779;
+  --display: Georgia, "Times New Roman", serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+#root { display: flex; min-height: 100vh; flex-direction: column; }
+main { flex: 1; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid #b66022; outline-offset: 4px; }
+h1, h2, h3, p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+.shell { width: min(1120px, calc(100% - 3rem)); margin-inline: auto; }
+.header { background: var(--paper); border-bottom: 1px solid var(--line); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4.5rem; }
+.brand { display: inline-flex; align-items: center; color: var(--ink); text-decoration: none; font-size: 1.55rem; font-weight: 750; letter-spacing: -.055em; }
+.brand-mark { width: 2.25rem; height: 2.25rem; margin-right: .55rem; }
+.brand-dot { color: #b66022; }
+nav a { font-weight: 650; text-decoration-thickness: 1px; text-underline-offset: .4em; }
+.hero {
+  color: #fff;
+  background: linear-gradient(90deg, rgb(15 37 30 / .96), rgb(20 45 36 / .68) 52%, rgb(23 53 40 / .17)),
+    #284c3e url('./images/atacama.jpg') center 49% / cover;
+}
+.hero-content { padding-block: clamp(3rem, 8vw, 6rem); }
+.overline { color: var(--amber); font-size: .9rem; font-weight: 750; text-transform: uppercase; letter-spacing: .16em; margin-bottom: .85rem; }
+h1, h2 { font-family: var(--display); font-weight: 500; line-height: 1.08; }
+h1 { font-size: clamp(2.6rem, 7vw, 5rem); letter-spacing: -.045em; }
+.hero-content > p:last-child { max-width: 29rem; margin-top: 1.1rem; color: #fff; font-size: 1.12rem; }
+.section { padding-block: clamp(2rem, 5vw, 4rem); }
+h2 { font-size: clamp(1.85rem, 4vw, 2.8rem); margin-bottom: 1.25rem; letter-spacing: -.025em; }
+#catalog-title { scroll-margin-top: 1.25rem; }
+.destination { height: 100%; display: flex; flex-direction: column; text-decoration: none; background: var(--paper); border: 1px solid var(--line); border-radius: .9rem; overflow: hidden; }
+.destination:hover { border-color: var(--green); }
+.destination-image { aspect-ratio: 16 / 9; background-position: center; background-size: cover; }
+.image-atacama { background-color: #b77350; background-image: url('./images/atacama.jpg'); }
+.image-patagonia { background-color: #4e746b; background-image: url('./images/patagonia.jpg'); }
+.image-chiloe { background-color: #5d7879; background-image: url('./images/chiloe.jpg'); }
+.destination-info { flex: 1; display: flex; flex-direction: column; padding: 1.25rem; }
+.region { font-size: .9rem; font-weight: 650; color: var(--green); }
+h3 { font-size: 1.15rem; line-height: 1.25; }
+.destination h3 { margin-block: .35rem; font-family: var(--display); font-size: 1.5rem; }
+.activities { color: var(--muted); margin-bottom: 1rem; }
+.card-link { margin-top: auto; color: var(--green); font-weight: 700; text-decoration: underline; text-underline-offset: .25em; }
+.credits-link { color: var(--muted); font-size: .9rem; text-underline-offset: .22em; }
+.back { display: inline-block; margin-bottom: 1rem; color: var(--green); font-weight: 700; text-underline-offset: .25em; }
+.detail h1 { margin-bottom: 1.6rem; }
+.options h2 { font-size: 2rem; }
+.option-list { display: grid; gap: .8rem; }
+.option-card { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 1rem; background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; }
+.option-card p { color: var(--muted); font-size: .9rem; margin-top: .3rem; }
+.option-price { flex-shrink: 0; text-align: right; }
+.option-price strong { font-size: 1.25rem; }
+.option-price .available { color: var(--green); font-weight: 700; }
+.option-price .sold-out { color: #a43630; font-weight: 700; }
+.state { padding: 1.25rem; background: var(--paper); border: 1px solid var(--line); border-radius: .75rem; }
+.state button { margin-top: .8rem; padding: .55rem .9rem; border: 0; border-radius: .35rem; background: var(--green); color: #fff; font: inherit; font-weight: 650; cursor: pointer; }
+.footer { border-top: 1px solid var(--line); }
+
+@media (max-width: 540px) {
+  .shell { width: calc(100% - 2rem); }
+  .hero { background-position: 62% center; }
+}
+
+@media (max-width: 370px) {
+  .option-card { flex-direction: column; }
+  .option-price { text-align: left; }
+}
